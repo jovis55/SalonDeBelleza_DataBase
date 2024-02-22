@@ -1,13 +1,16 @@
 package com.example.salondebelleza_database.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
-
+@Entity
+@Getter
+@Setter
+@ToString
 public class Especialidad implements Serializable {
     @Id
     @EqualsAndHashCode.Include
