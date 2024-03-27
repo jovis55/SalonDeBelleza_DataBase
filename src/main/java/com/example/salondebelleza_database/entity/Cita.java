@@ -36,4 +36,12 @@ public class Cita implements Serializable {
     @Column(name="duracion", nullable = true)
     private double duracion;
 
+    @OneToOne
+    @JoinColumn(name = "id_empleado_servicio", referencedColumnName = "id_empleado_servicio")
+    private EmpleadoServicio empleadoServicio;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Cliente cliente;
+
 }

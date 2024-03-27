@@ -28,10 +28,7 @@ public class DetalleVentaController {
         return detalleVentaService.obtenerDetalleVenta(id);
     }
 
-    @GetMapping("/factura/{idFactura}")
-    public List<DetalleVenta> obtenerDetallesPorFactura(@PathVariable int idFactura) {
-        return detalleVentaService.obtenerDetallesPorFactura(idFactura);
-    }
+
 
     // Puedes agregar más métodos según sea necesario
 }

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -29,6 +31,11 @@ public class Empleado extends Usuario implements Serializable {
 
     @Column(name="fecha_nacimiento", nullable = true)
     private Date fecha_nacimiento;
+
     @Column(name = "imagen_url", length = 200, nullable = true)
     private String imagenUrl;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ciudad")
+    private Ciudad ciudad;
 }

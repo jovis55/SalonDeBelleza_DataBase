@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,4 +21,11 @@ public class Ciudad implements Serializable {
 
     @Column(name="nombre", length = 40, nullable = false)
     private String nombre;
+
+    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
+    private List<Cliente> clientes;
+
+    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
+    private List<Empleado> empleados;
+
 }

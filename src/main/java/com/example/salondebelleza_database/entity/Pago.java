@@ -33,4 +33,8 @@ public class Pago implements Serializable {
     @Column(name="monto", nullable = true)
     private double monto;
 
+    @OneToOne
+    @JoinColumn(name = "id_factura")
+    private Factura factura;
+
 }

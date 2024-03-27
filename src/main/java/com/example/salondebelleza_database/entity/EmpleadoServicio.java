@@ -26,6 +26,8 @@ public class EmpleadoServicio implements Serializable {
     @JoinColumn(name = "id_servicio", nullable = false) // Nombre de la columna que referencia al servicio
     private Servicio servicio;
 
-    // Otros atributos y métodos si es necesario
+    @ManyToOne
+    @JoinColumn(name = "id_ciudad")
+    private Ciudad ciudad;
 }
 

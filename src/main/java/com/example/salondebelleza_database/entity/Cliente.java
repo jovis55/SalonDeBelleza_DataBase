@@ -2,16 +2,14 @@ package com.example.salondebelleza_database.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -39,4 +37,13 @@ public class Cliente extends Usuario implements Serializable {
     @Column(name = "genero_musical", length = 20, nullable = false)
     private Genero_musical genero_musical;
 
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Factura> facturas;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Cita> citas;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ciudad")
+    private Ciudad ciudad;
 }

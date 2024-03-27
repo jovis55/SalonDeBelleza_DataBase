@@ -7,6 +7,6 @@ import java.util.List;
 public interface DetalleVentaIn {
     DetalleVenta crearDetalleVenta(DetalleVenta detalleVenta);
     DetalleVenta obtenerDetalleVenta(int id);
-    List<DetalleVenta> obtenerDetallesPorFactura(int idFactura);
+
 
 }

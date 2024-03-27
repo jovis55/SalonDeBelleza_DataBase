@@ -28,10 +28,7 @@ public class DetalleVentaService implements DetalleVentaIn {
         return detalleVentaOptional.orElse(null);
     }
 
-    @Override
-    public List<DetalleVenta> obtenerDetallesPorFactura(int idFactura) {
-        return detalleVentaRepository.findByFacturaId(idFactura);
-    }
+
 
     // Puedes implementar más métodos según sea necesario
 }
