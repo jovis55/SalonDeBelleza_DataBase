@@ -26,4 +26,7 @@ public class Producto implements Serializable {
 
     @Column(name="precio", nullable = true)
     private double precio;
+
+    @Column(name="stock_dispo", nullable = true)
+    private int stock_dispo;
 }

@@ -32,6 +32,7 @@ public class Cita implements Serializable {
 
     @Column(name="fecha_cita", nullable = true)
     private LocalDateTime fecha_cita;
+
     @Column(name="duracion", nullable = true)
     private double duracion;
 

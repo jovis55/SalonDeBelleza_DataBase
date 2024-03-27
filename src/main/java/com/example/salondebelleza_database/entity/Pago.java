@@ -23,8 +23,10 @@ public class Pago implements Serializable {
 
     @Column(name="metodo_pago", length = 20, nullable = false)
     private String metodo_pago;
+
     @Column(name="estado", length = 100, nullable = false)
     private String estado;
+
     @Column(name="fecha_pago", nullable = true)
     private LocalDateTime fecha_pago;
 
