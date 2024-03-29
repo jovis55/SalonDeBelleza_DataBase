@@ -30,5 +30,4 @@ public class DetalleVentaController {
 
 
 
-    // Puedes agregar más métodos según sea necesario
 }

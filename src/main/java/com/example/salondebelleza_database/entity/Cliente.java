@@ -35,7 +35,7 @@ public class Cliente extends Usuario implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "genero_musical", length = 20, nullable = false)
-    private Genero_musical genero_musical;
+    private Genero_Musical genero_musical;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Factura> facturas;
