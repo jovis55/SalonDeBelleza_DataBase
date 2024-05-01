@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/ciudades")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CiudadController {
 
     private final CiudadService ciudadService;
@@ -20,7 +21,7 @@ public class CiudadController {
         this.ciudadService = ciudadService;
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<List<Ciudad>> getAllCiudades() {
         List<Ciudad> ciudades = ciudadService.getAllCiudades();
         return new ResponseEntity<>(ciudades, HttpStatus.OK);

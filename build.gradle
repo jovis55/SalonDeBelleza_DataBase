@@ -47,6 +47,7 @@ dependencies {
     testImplementation 'org.testcontainers:mssqlserver'
     testImplementation 'org.testcontainers:mysql'
     testImplementation 'org.testcontainers:oracle-free'
+    implementation 'com.cloudinary:cloudinary-http44:1.21.0'
 }
 
 tasks.named('test') {

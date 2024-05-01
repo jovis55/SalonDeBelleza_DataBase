@@ -31,10 +31,10 @@ public class Cliente extends Usuario implements Serializable {
     private Date fecha_nacimiento;
 
     @Column(name = "imagen_url", length = 200, nullable = true)
-    private String imagenUrl;
+    private String imagen_url;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "genero_musical", length = 20, nullable = false)
+    @Column(name = "genero_musical", length = 20, nullable = true)
     private Genero_Musical genero_musical;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)

@@ -21,6 +21,7 @@ public class Servicio implements Serializable {
 
     @Column(name="nombre", length = 100, nullable = false)
     private String nombre;
+
     @Column(name="descripcion", length = 300, nullable = false)
     private String descripcion;
 
