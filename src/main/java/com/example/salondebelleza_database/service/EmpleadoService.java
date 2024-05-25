@@ -22,7 +22,12 @@ public class EmpleadoService implements EmpleadoIn {
     public List<Empleado> getAllEmpleados() {
         return empleadoRepository.findAll();
     }
-
+    public List<Empleado> findEmpleadosPorEspecialidad(int especialidadId) {
+        return empleadoRepository.findByEspecialidadId(especialidadId);
+    }
+    public List<Empleado> findEmpleadosPorServicio(int servicioId) {
+        return empleadoRepository.findByServicioId(servicioId);
+    }
     @Override
     public Empleado getEmpleadoById(String id) {
         Optional<Empleado> empleadoOptional = empleadoRepository.findById(id);

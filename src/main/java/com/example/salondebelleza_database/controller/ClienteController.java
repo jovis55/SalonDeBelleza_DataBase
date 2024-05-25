@@ -42,7 +42,7 @@ public class ClienteController {
         return new ResponseEntity<>(clientes, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id_usuario}")
     public ResponseEntity<Cliente> getClienteById(@PathVariable("id_usuario") String id) {
         Cliente cliente = clienteService.getClienteById(id);
         if (cliente != null) {

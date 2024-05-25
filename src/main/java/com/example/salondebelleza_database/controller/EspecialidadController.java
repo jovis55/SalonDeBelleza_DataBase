@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/especialidades")
+@CrossOrigin(origins = "http://localhost:4200")
 public class EspecialidadController {
 
     private final EspecialidadService especialidadService;
@@ -61,8 +62,7 @@ public class EspecialidadController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<List<Especialidad>> listarEspecialidades() {
         try {
             List<Especialidad> especialidades = especialidadService.listarEspecialidades();

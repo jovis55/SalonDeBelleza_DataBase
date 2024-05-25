@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/empleados")
+@CrossOrigin(origins = "http://localhost:4200")
 public class EmpleadoController {
 
     private final EmpleadoService empleadoService;
@@ -42,7 +43,16 @@ public class EmpleadoController {
         Empleado savedEmpleado = empleadoService.saveEmpleado(empleado);
         return new ResponseEntity<>(savedEmpleado, HttpStatus.CREATED);
     }
+    // Endpoint para obtener empleados por ID de especialidad
+    @GetMapping("/espe/{idEspecialidad}")
+    public List<Empleado> obtenerEmpleadosPorEspecialidad(@PathVariable int idEspecialidad) {
+        return empleadoService.findEmpleadosPorEspecialidad(idEspecialidad);
+    }
 
+    @GetMapping("/servicio/{idServicio}")
+    public List<Empleado> obtenerEmpleadosPorServicio(@PathVariable int idServicio) {
+        return empleadoService.findEmpleadosPorServicio(idServicio);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEmpleado(@PathVariable String id) {
         empleadoService.deleteEmpleado(id);

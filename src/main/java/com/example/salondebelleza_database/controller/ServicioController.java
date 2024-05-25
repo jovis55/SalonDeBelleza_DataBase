@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/servicios")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ServicioController {
 
     private final ServicioService servicioService;
@@ -62,7 +63,7 @@ public class ServicioController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<List<Servicio>> listarServicios() {
         try {
             List<Servicio> servicios = servicioService.listarServicios();

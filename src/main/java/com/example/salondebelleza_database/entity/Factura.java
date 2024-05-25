@@ -30,9 +30,6 @@ public class Factura implements Serializable {
     @Column(name = "estado_venta", length = 20, nullable = false)
     private Estado_venta estado_venta;
 
-    @OneToOne
-    @JoinColumn(name = "id_cita", referencedColumnName = "id_cita")
-    private Cita cita;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")

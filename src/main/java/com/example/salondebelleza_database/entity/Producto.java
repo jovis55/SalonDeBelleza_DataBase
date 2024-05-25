@@ -7,6 +7,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -24,9 +26,16 @@ public class Producto implements Serializable {
     @Column(name="descripcion", length = 300, nullable = false)
     private String descripcion;
 
+    @Column(name = "imagen_url", length = 200, nullable = true)
+    private String imagen_url;
+
+
     @Column(name="precio", nullable = true)
     private double precio;
 
     @Column(name="stock_dispo", nullable = true)
     private int stock_dispo;
+
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+    private List<PagoProducto> pagosProductos;
 }

@@ -6,6 +6,8 @@ import com.example.salondebelleza_database.service.excepciones.AttributeExceptio
 import java.util.List;
 
 public interface EmpleadoServicioIn {
+
+    Long getIdEmpleadoServicio(String idEmpleado, Long idServicio);
     EmpleadoServicio crearEmpleadoServicio(EmpleadoServicio empleadoServicio) throws AttributeException;
     EmpleadoServicio actualizarEmpleadoServicio(EmpleadoServicio empleadoServicio) throws AttributeException;
     EmpleadoServicio obtenerEmpleadoServicio(Long id) throws AttributeException;
