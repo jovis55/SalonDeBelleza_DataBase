@@ -12,13 +12,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
-
 @SpringBootApplication
 public class SalonDeBellezaDataBaseApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SalonDeBellezaDataBaseApplication.class, args);
     }
+
     @Bean
     public CommandLineRunner loadDataSet(DataSource dataSource) {
         return args -> {
@@ -29,19 +29,5 @@ public class SalonDeBellezaDataBaseApplication {
             }
         };
     }
-
-    @Configuration
-    public static class Myconfiguration{
-        @Bean
-        public WebMvcConfigurer corsConfigurer(){
-            return new WebMvcConfigurer() {
-                @Override
-                public void addCorsMappings(CorsRegistry registry) {
-                    registry.addMapping("/**")
-                            .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
-                }
-            };
-        }
-    }
-
 }
+
