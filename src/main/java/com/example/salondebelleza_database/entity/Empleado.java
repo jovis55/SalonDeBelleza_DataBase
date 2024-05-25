@@ -2,16 +2,14 @@ package com.example.salondebelleza_database.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -38,4 +36,13 @@ public class Empleado extends Usuario implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_ciudad")
     private Ciudad ciudad;
+
+    @OneToMany(mappedBy = "empleado")
+    private List<Disponibilidad> disponibilidadList ;
+
+    @OneToMany(mappedBy = "empleado")
+    private List<EmpleadoEspecialidad> empleadoEspecialidadList; // Relación con EmpleadoEspecialidad
+
+    @OneToMany(mappedBy = "empleado")
+    private List<EmpleadoServicio> empleadoServicioList; // Relación con EmpleadoEspecialidad
 }

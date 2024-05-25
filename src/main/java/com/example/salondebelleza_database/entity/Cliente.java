@@ -46,4 +46,7 @@ public class Cliente extends Usuario implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_ciudad")
     private Ciudad ciudad;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<PagoProducto> pagosProductos;
 }

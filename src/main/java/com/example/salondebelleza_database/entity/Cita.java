@@ -1,5 +1,6 @@
 package com.example.salondebelleza_database.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -36,12 +37,18 @@ public class Cita implements Serializable {
     @Column(name="duracion", nullable = true)
     private double duracion;
 
-    @OneToOne
-    @JoinColumn(name = "id_empleado_servicio", referencedColumnName = "id_empleado_servicio")
+    @ManyToOne // Many-to-One con EmpleadoServicio
+    @JoinColumn(name = "id_empleado_servicio") // Columna en esta entidad que hace referencia a EmpleadoServicio
     private EmpleadoServicio empleadoServicio;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
     private Cliente cliente;
+
+
+    @OneToOne(mappedBy = "cita", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference // Evita la recursión infinita
+    private Pago pago;
+
 
 }

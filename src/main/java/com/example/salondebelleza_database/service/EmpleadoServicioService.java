@@ -13,6 +13,10 @@ public class EmpleadoServicioService implements EmpleadoServicioIn {
 
     private final EmpleadoServicioRepository empleadoServicioRepository;
 
+    @Override
+    public Long getIdEmpleadoServicio(String idEmpleado, Long idServicio) {
+        return empleadoServicioRepository.findIdEmpleadoServicio(idEmpleado, idServicio);
+    }
     @Autowired
     public EmpleadoServicioService(EmpleadoServicioRepository empleadoServicioRepository) {
         this.empleadoServicioRepository = empleadoServicioRepository;

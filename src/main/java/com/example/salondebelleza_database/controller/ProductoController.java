@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/productos")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductoController {
 
     private final ProductoService productoService;
@@ -32,15 +33,35 @@ public class ProductoController {
     }
 
     @PutMapping("/{idProducto}")
-    public ResponseEntity<Producto> actualizarProducto(@PathVariable("idProducto") int idProducto, @RequestBody Producto producto) {
+    public ResponseEntity<Producto> actualizarProducto(@PathVariable("idProducto") int idProducto, @RequestBody Producto productoActualizado) {
         try {
-            producto.setId_producto(idProducto);
-            Producto productoActualizado = productoService.actualizarProducto(producto);
-            return new ResponseEntity<>(productoActualizado, HttpStatus.OK);
-        } catch (AttributeException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            // Obtener el producto existente de la base de datos utilizando su ID
+            Producto productoExistente = productoService.obtenerProducto(idProducto);
+
+            // Verificar si se encontró el producto
+            if (productoExistente != null) {
+                // Actualizar las propiedades relevantes del producto con los datos proporcionados en la solicitud
+                productoExistente.setNombre(productoActualizado.getNombre());
+                productoExistente.setDescripcion(productoActualizado.getDescripcion());
+                productoExistente.setImagen_url(productoActualizado.getImagen_url());
+                productoExistente.setPrecio(productoActualizado.getPrecio());
+                productoExistente.setStock_dispo(productoActualizado.getStock_dispo());
+
+                // Guardar el producto actualizado en la base de datos
+                Producto productoGuardado = productoService.actualizarProducto(productoExistente);
+
+                // Devolver una respuesta con el producto actualizado
+                return ResponseEntity.ok(productoGuardado);
+            } else {
+                // Si no se encuentra el producto, devolver una respuesta de error
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            // Manejar cualquier excepción y devolver una respuesta de error
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
 
     @GetMapping("/{idProducto}")
     public ResponseEntity<Producto> obtenerProducto(@PathVariable("idProducto") int idProducto) {

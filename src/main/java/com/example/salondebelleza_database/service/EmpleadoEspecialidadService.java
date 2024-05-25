@@ -15,6 +15,7 @@ public class EmpleadoEspecialidadService implements EmpleadoEspecialidadIn {
         this.empleadoEspecialidadRepository = empleadoEspecialidadRepository;
     }
 
+
     @Override
     public List<EmpleadoEspecialidad> getAllEmpleadoEspecialidades() {
         return empleadoEspecialidadRepository.findAll();

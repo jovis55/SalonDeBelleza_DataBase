@@ -1,5 +1,6 @@
 package com.example.salondebelleza_database.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -34,7 +35,9 @@ public class Pago implements Serializable {
     private double monto;
 
     @OneToOne
-    @JoinColumn(name = "id_factura")
-    private Factura factura;
+    @JoinColumn(name = "id_cita")
+    @JsonManagedReference // Evita la recursión infinita
+    private Cita cita;
+
 
 }

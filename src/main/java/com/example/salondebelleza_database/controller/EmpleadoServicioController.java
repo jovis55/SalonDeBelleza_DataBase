@@ -11,10 +11,20 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/empleadoservicios")
+@CrossOrigin(origins = "http://localhost:4200")
 public class EmpleadoServicioController {
 
     private final EmpleadoServicioService empleadoServicioService;
-
+    @GetMapping("/buscarEmpSer")
+    public ResponseEntity<?> getIdEmpleadoServicio(@RequestParam String idEmpleado, @RequestParam Long idServicio) {
+        Long idEmpleadoServicio = empleadoServicioService.getIdEmpleadoServicio(idEmpleado, idServicio);
+        if (idEmpleadoServicio != null) {
+            System.out.println(idEmpleadoServicio);
+            return ResponseEntity.ok(idEmpleadoServicio);
+        } else {
+            return ResponseEntity.status(404).body("Empleado o Servicio no encontrado");
+        }
+    }
     @Autowired
     public EmpleadoServicioController(EmpleadoServicioService empleadoServicioService) {
         this.empleadoServicioService = empleadoServicioService;

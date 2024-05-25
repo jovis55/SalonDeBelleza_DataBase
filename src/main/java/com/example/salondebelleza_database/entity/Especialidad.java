@@ -21,4 +21,5 @@ public class Especialidad implements Serializable {
     @Column(name="nombre", length = 100, nullable = false)
     private String nombre;
 
+
 }
